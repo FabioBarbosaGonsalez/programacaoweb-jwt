@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Simulado com JWT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Tela de login (Etapa 1) -->
+  <h2>Login Simulado com JWT</h2>
+  <input id="email" placeholder="E-mail">
+  <input id="senha" type="password" placeholder="Senha">
+  <button id="loginBtn">Entrar</button>
+  <p id="mensagem"></p>
+
+  <script>
+    // Token fixo fornecido no laboratório (secret: my-secret-key)
+    const tokenFake =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzLCJuYW1lIjoiRW5nLiBDb21wdXRhXHUwMGU3XHUwMGUzbyIsInJvbGUiOiJKV1QiLCJpYXQiOjE3NTk5ODEzMTcsImV4cCI6MTc1OTk4NDkxN30.b1KfcSFInRwYnvRA0Ae5jYuL59KZmCsufPgISNGq0X0";
+
+    loginBtn.addEventListener("click", () => {
+      // 1. Lê os campos (nomes diferentes dos ids para não haver conflito)
+      const emailValor = email.value;
+      const senhaValor = senha.value;
+
+      // 1. Verifica se os campos foram preenchidos
+      if (emailValor && senhaValor) {
+        // 2. Armazena o token fixo no localStorage
+        localStorage.setItem("token", tokenFake);
+        // 3. Redireciona para a área restrita
+        window.location.href = "area.html";
+      } else {
+        mensagem.textContent = "Preencha e-mail e senha.";
+      }
+    });
+  </script>
+</body>
+</html>
